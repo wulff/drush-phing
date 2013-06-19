@@ -78,7 +78,7 @@ function drush_phing_list_tests() {
 
   if (!empty($groups)) {
     foreach (array_keys($groups) as $group_name) {
-      drush_print($group_name);
+      drush_print('Simpletest: ' . $group_name);
     }
   }
 }
