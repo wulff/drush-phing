@@ -60,25 +60,7 @@ function drush_phing_list_tests() {
   $groups = array();
   foreach ($classes as $class) {
     if (class_exists($class) && method_exists($class, 'getInfo')) {
-      if (class_exists($class) && method_exists($class, 'getInfo')) {
-        $info = call_user_func(array($class, 'getInfo'));
-
-        if (!empty($info['dependencies'])) {
-          foreach ($info['dependencies'] as $module) {
-            if (!drupal_get_filename('module', $module)) {
-              continue 2;
-            }
-          }
-        }
-
-        $groups[$info['group']]++;
-      }
-    }
-  }
-
-  if (!empty($groups)) {
-    foreach (array_keys($groups) as $group_name) {
-      drush_print('Simpletest: ' . $group_name);
+      drush_print('Simpletest: ' . $class);
     }
   }
 }
